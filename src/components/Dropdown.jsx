@@ -1,20 +1,20 @@
+import { useState } from "react";
+import { GoChevronLeft,GoChevronDown } from "react-icons/go";
 
 const Dropdown = ({ options }) => {
-  console.log(options);
+  const [ list,setList ] = useState("Select...")
   const listOfOptions = options.map((option) => {
     return(
-      <div key={option.id}>
-        <div>{option.label}</div>
-      </div>
+      <p value={option.value} id={option.id}>{option.label}</p>
     )
   })
   return(
   <div>
-    <label className="block">select a Color </label>
-    <select name="options" id="option" className="border-solid border-2 rounded-lg">
-      <option value="">Select......</option>
-    </select>
-    {listOfOptions}
+    <label className="block">select a Color </label><br />
+    <div name="options" id="option" className="inline-flex space-around  border-solid border-2 rounded-lg border-black w-40">
+      <p>{list}</p>
+      <p><GoChevronDown /></p> 
+    </div>
   </div>
   )
 };
